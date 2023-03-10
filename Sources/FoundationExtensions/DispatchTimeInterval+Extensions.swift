@@ -29,12 +29,12 @@ extension DispatchTimeInterval {
 
     /// `DispatchTimeInterval` can only be used by specifying a unit of time.
     /// This allows us to easily convert any `DispatchTimeInterval` into nanoseconds.
-    var nanoseconds: Int64 {
+    var nanoseconds: Int {
         switch self {
-        case let .seconds(s): return Int64(s) * 1_000_000_000
-        case let .milliseconds(ms): return Int64(ms) * 1_000_000
-        case let .microseconds(ms): return Int64(ms) * 1000
-        case let .nanoseconds(ns): return Int64(ns)
+        case let .seconds(s): return s * 1_000_000_000
+        case let .milliseconds(ms): return ms * 1_000_000
+        case let .microseconds(ms): return ms * 1000
+        case let .nanoseconds(ns): return ns
         case .never: return 0
         @unknown default: fatalError("Unknown value: \(self)")
         }
